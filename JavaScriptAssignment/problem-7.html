@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>calculator-prompt</title>
+</head>
+<body>
+	<script>
+		let calculator ={
+		sum(){
+			return this.a + this.b;
+		},
+
+		mul(){
+			return this.a * this.b;
+		},
+
+		read(){
+			this.a =+ prompt("Enter the value of a?","0");
+			this.b =+ prompt("Enter the value of b?","0");
+		}
+	};
+	calculator.read();
+	console.log(calculator.sum());
+	console.log(calculator.mul());
+
+	</script>
+</body>
+</html>
