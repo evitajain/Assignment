@@ -1,0 +1,54 @@
+Assignment1:
+
+1. Responsive changes
+
+Assignment3:
+
+1. Hover on social icons button
+ -DONE
+2. Margin between cards
+ -DONE
+3. Hover on Button -DONE
+
+4. In responsive, banner center -DONE 
+Assignment4: 
+
+1. Design come below.
+ -DONE
+2. Trainsition -DONE 
+3. Video
+
+4. all columns comes in container -DONE 
+Assignment7:
+
+1. Toggle section -Done
+Assignment8:
+
+1. Light box -Done
+2. Hover on social icons -DONE 
+Assignment9:
+
+1. Caarousel-indicator change -DONE 
+2. Social Icons hover -DONE 
+3. Menu Active
+
+4. Cards take margin from left and right -Done
+Assignment10:
+
+1. Footer content in center. -Done
+Assignment12:
+
+1. Border in Modal
+ -Done
+2. hover on social icons -Done
+Assignment13:
+1. In full-width, paddding to p tag. -Done
+2. Gallery on small screens -Done
+Assignment14:
+
+1.  Change navigation in responsive
+ -Done
+in small screen images order first and content order second -Done
+Assignment15:
+
+1.  Active the tabs -Done
