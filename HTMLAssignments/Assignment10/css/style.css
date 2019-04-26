@@ -35,13 +35,15 @@ body{
 	outline: none;
 }
 .navbar-toggler-icon{
-	width: 5px;
-	height: 35px;
+	width: 30px;
+    height: 2px;
+    margin: 6px 3px;
+    display: block;
 	background-color: #C2C1C5;
 }
 .navbar-toggler{
 	border: none;
-	transform: rotate(90deg);
+	border-radius: 0;
 	padding: 10px;
 }
 .navbar-nav{

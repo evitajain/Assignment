@@ -48,13 +48,15 @@ a:hover{
     padding: 15px 0;
 }
 .navbar-toggler-icon{
-    width: 2px;
-    height: 22px;
-    background-color: #fff;
+    width: 22px;
+    height: 2px;
+    background-color: rgba(255,255,255,1);
+    margin: 4px 3px;
+    display: block;
 }
 .navbar-toggler{
     background-color: #E84C3D;
-    transform: rotate(90deg);
+    border-radius: 0;
     padding: 10px;
     margin-right: 12px;
 }
@@ -654,6 +656,14 @@ footer p{
     /* .dropdown-toggle::after{
         float: right;
     } */
+}
+@media only screen and (max-width: 576px){
+    .mb-mob{
+        margin-bottom: 30px;
+    }
+    .gallery-img{
+        margin-top: 0;
+    }
 }
 @media only screen and (max-width: 480px){
     .social-icons li a {

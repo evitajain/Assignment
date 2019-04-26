@@ -13,20 +13,14 @@ window.onscroll = function() {scrollFunction()};
       document.documentElement.scrollTop = 0;
     }
 
+    function flip() {
+    $('.card').toggleClass('flipped');
+    $('.hide_it').toggleClass('go_back');
+   }
 
-    function check(){
-      if(document.getElementById('business').checked ){
-        document.getElementById('businessData').style.display = 'flex';
-        document.getElementById('communityData').style.display = 'none';
-        document.getElementById('switching').style.left = "2px";
-        //console.log("business section");
-      }
-      else{
-        document.getElementById('communityData').style.display ='flex';
-        document.getElementById('businessData').style.display = 'none';
-        document.getElementById('switching').style.left = "90px";
-        //console.log("community")
-      }
-    }
-
-    
+   $(function(){
+          $('.switch span').click(function(){
+              $('.switch span.active').removeClass('active');
+              $(this).addClass('active');
+          });
+      });

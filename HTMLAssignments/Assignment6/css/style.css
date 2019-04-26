@@ -55,13 +55,15 @@ body{
 	color: #66ccff;
 }
 .navbar-toggler-icon{
-	width: 2px;
-	height: 22px;
-	background-color: #fff;
+	width: 22px;
+    height: 2px;
+    background-color: rgba(255,255,255,1);
+    margin: 4px 3px;
+    display: block;
 }
 .navbar-toggler{
 	background-color: #202020;
-	transform: rotate(90deg);
+	border-radius: 0;
 	padding: 10px;
 }
 .banner{
@@ -463,18 +465,18 @@ footer .social li{
   font-size: 20px;
 }
 footer .social li i{
-  padding: 14px 12px 10px 0;
-  color: #666;
-  border: 2px solid transparent;
+  	border: 2px solid transparent;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    padding: 8px 8px 0 8px;
+    transition: 0.3s all;
+    color: #666;
 }
 footer .social li i:hover{
 	color: #fff;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
     background-color: #F25560;
-    text-align: center;
-    padding-left: 11px;
+    transition: 0.3s all;
 }
 @media only screen and (max-width: 1200px){
 	.navbar-nav{
@@ -539,6 +541,15 @@ footer .social li i:hover{
 	#accordion .card-header button{
 		font-size: 16px;
 	}
+	.banner .learnBtn{
+		visibility: hidden;	
+	}
+	.banner .registerBtn{
+		margin-right: 30%;
+	}
+	.register form button{
+		float: left;
+	}
 }
 @media only screen and (max-width: 576px){
 	.programs .tab-content h6{
@@ -556,6 +567,9 @@ footer .social li i:hover{
 	.speakers .speakers-content h6{
 		font-size: 13px;
 	}
+	.banner{
+		height: 120vh;
+	}
 }
 @media only screen and (max-width: 480px){
 	.programs .nav-tabs{
@@ -572,6 +586,9 @@ footer .social li i:hover{
 	}
 	.speakers .item{
 		width: 100px;
+	}
+	.banner .registerBtn{
+		margin-right: 26%;
 	}
 }
 @media only screen and (max-width: 430px){

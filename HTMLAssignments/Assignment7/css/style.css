@@ -47,9 +47,11 @@ body{
 }
 .social-icons li a:hover i{
     color: #82ca9c;
+    transition: 0.3s all;
 }
 .social-icons li i{
 	font-size: 12px;
+    transition: 0.3s all;
 }
 .social-contact a{
 	color: #fff;
@@ -90,22 +92,26 @@ body{
     padding: 4px 30px;
     text-transform: uppercase;
     cursor: pointer;
+    transition: 0.3s all;
 }
 .navbar-nav li a button:hover{
 	background: #82ca9c;
 	color: #fff;
+    transition: 0.3s all;
 }
 .navbar-nav li{
 	padding-right: 12px;
 }
 .navbar-toggler-icon{
-    width: 2px;
-    height: 22px;
-    background-color: #fff;
+    width: 22px;
+    height: 2px;
+    background-color: rgba(255,255,255,1);
+    margin: 4px 3px;
+    display: block;
 }
 .navbar-toggler{
     background-color: #202020;
-    transform: rotate(90deg);
+    border-radius: 3px;
     padding: 10px;
     margin-right: 12px;
 }
@@ -196,15 +202,17 @@ body{
     border: 0;
     padding: 12px 30px;
     margin-top: 20px;
+    transition: 0.3s all;
 }
 .product .product-content button:hover, .features .features-content button:hover{
 	background: #40C26E;
+    transition: 0.3s all;
 }
 .services{
 	background: #F9F9F9;
 	padding: 8% 0 8% 0;
 }
-.services .heading h2, .price .heading h2, .business .heading h2, .contact .heading h2{
+.services .heading h2, /*.price .heading h2,*/ .business .heading h2, .contact .heading h2{
 	font-size: 37.5px;
 	line-height: 45px;
 	color: #565656;
@@ -242,7 +250,7 @@ body{
 	font-size: 18px;
     color: #777777;
 }
-.price,.contact{
+/*.price,*/.contact{
 	padding: 8% 0 8% 0;
 }
 .business{
@@ -310,10 +318,12 @@ body{
     padding: 12px 30px;
     margin-top: 20px;
     letter-spacing: 1px;
+    transition: 0.3s all;
 }
 .contact form button:hover{
 	color: #fff;
     background-color: rgba(0, 173, 62, 0.75);
+    transition: 0.3s all;
 }
 .contact .contact-desc{
 	color: #565656;
@@ -407,109 +417,190 @@ body{
 	background-color: rgba(0, 173, 62, 0.75);
 	border: none;
 }
-footer{
+.footer-text{
 	padding: 25px 0 20px 0;
 	border-top: 1px solid #999;
 }
-footer i{
+.footer-text i{
 	color: #FF0000;
 }
-footer p{
+.footer-text p{
 	padding-left: 26%;
 }
-.switch{
-	display: inline-block;
+.sec4{
+    padding: 100px 0px;
     position: relative;
-    padding: 2px;
-    border-radius: 25px;
+    height: 940px;
+}
+
+.sec4 .toggle_switch{
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 40px;
+}
+.sec4 .switch{
+    position: relative;
+    display: inline-block;
     background: #82ca9c;
+    padding: 12px 2px;
+    border-radius: 20px;
 }
-.switch input[type="radio"] {
-    position: absolute;
- 	opacity: 0; 
+.sec4 .switch span{
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+    padding: 14px;
+    cursor: pointer;
+    transition: 0.3s ease;
 }
-.switch label{
+.sec4 .switch span.active{
+    background: #0c1f28;
+    border-radius: 20px;
+}
+.sec4 .pricing_div{
+    border-radius: 4px 4px 6px 6px;
+}
+.sec4 .price_header{
+    height: auto;
+    padding: 20px 10px 15px 20px;
+    pointer-events: auto;
+    text-align: center;
+    color: #000;
+    font-size: 14px; 
     position: relative;
     z-index: 1;
-    float: left;
-    width: 90px;
-    height: 35px;
-    line-height: 45px;
-    cursor: pointer;
-    font-size: 12px;
+    border:1px #82ca9c solid;
+}
+
+.sec4 .col-md-4.active .price_header{
+    background: #82ca9c;
     color: #fff;
 }
-#switching{
-    position: absolute;
-    top: 1px;
-    left: 2px;
-    height: 44px;
-    width: 90px;
-    background-color: #0c1f28;
-    border-radius: 25px;
-    -webkit-transition: -webkit-transform 0.5s;
-    transition: 0.5s ease;
-}
-.price .card-deck{
-    margin-top: 30px;
-}
-.price .card-header{
-    background: transparent;
-    border: 1px solid #82ca9c;
-    border-radius: 0;
-}
-.price .c-price .currency{
-    font-size: 23px;
-    font-weight: 700;
-}
-.price .c-price .value{
-    font-size: 23px;
-    font-weight: 300;
-}
-.price .c-price .duration{
-    font-size: 1rem;
-    text-transform: uppercase;
-    font-weight: 700;
-}
-.price .card-header h3{
-    font-size: 14px;
-    font-weight: 700;
+
+.sec4 .price_header h2{
+    font-size: 18px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin: 30px 0 10px 0;
 }
-.price .card-body i{
+
+.sec4 .price_header .symbol{
+    display: inline-block;
+    margin-top: 0px;
+    vertical-align: top;
+    font-weight: 700;
+    font-size: 28px;
+}
+
+
+.sec4 .price_header .value{
+    font-size: 28px;
+    font-weight: 300;
+}
+
+.sec4 .price_header .duration{
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.sec4 .price_body{
+    overflow-x: visible; 
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    border-top: none;
+    padding-bottom: 2px;
+}
+.sec4 .price_body i{
     padding-right: 5px;
     color: #82ca9c;
 }
-.price .card-body .fa-times{
+.sec4 .price_body .fa-times{
     color: red;
 }
-.price .card-footer{
-    background: #82CA9C;
-    border: none;
-    padding: 25px;
+.sec4 .pricing{
+    width: auto;
+    padding: 0px;
 }
-.price .card-footer button{
-    background: transparent;
-    color: #fff;
-    border: none;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+
+.sec4 .pricing li{
+    font-size: 16px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 15px;
 }
-.price .card .popular{
-    background: #82CA9C;
-    color: #fff;
-}
-.price .card-body p {
-     padding-bottom: 10px; 
-     color: #565656;
-}
-#communityData {
-  display: none;
-}
-.price{
+
+.sec4 .pricing_div footer{
     position: relative;
+    height: auto;
+    text-align: center;
+    width: 100%;
+    top:0;
+    left: 0;
+    z-index: 1;
+}
+
+.sec4 .pricing_div footer a{
+    display: block;
+    border-radius: 0 0 4px 4px;
+    background: #82ca9c;
+    color: #fff;
+    padding: 25px;
+    text-transform: uppercase;
+}
+.sec4 .pricing_div footer a:hover{
+    text-decoration: none;
+}
+
+.container {
+    /*position: relative;*/
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+    -o-perspective: 800px;
+    perspective: 800px;
+}
+.card {
+    /*position: absolute;*/
+    -webkit-transition: -webkit-transform 1s;
+    -moz-transition: -moz-transform 1s;
+    -o-transition: -o-transform 1s;
+    transition: transform 1s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform-origin: 50% 50%;
+    border: none;
+}
+.card .pricing_div{
+    width: 100%;
+    padding: 15px;
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.card .back {
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+    -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
+}
+.card.flipped {
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+    -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
+}
+.go_back{
+    z-index: 2
+}
+.mob_res1{
+    left: 35%;
+}
+.mob_res2{
+    left: 70%;
 }
 @media only screen and (max-width: 1300px){
     footer p {
@@ -570,6 +661,45 @@ footer p{
     }
     .banner form {
         padding: 0 20%;
+    }
+    .sec4{
+        height: 1875px;
+    }
+    .mob_res1{
+        left: 0;
+        top: 470px;
+    }
+    .mob_res2 {
+        left: 0;
+        top: 940px;
+    }
+    .business .community{
+        margin-bottom: 30px;
+    }
+    .business .business-content{
+        margin-bottom: 0;
+    }
+    .contact .contact-desc{
+        margin-top: 20px;
+    }
+    .services .service-img img{
+        float: left;
+        margin-bottom: 15px;
+        margin-top: 0;
+    }
+    .services .service-img2 img{
+        float: left;
+        margin-bottom: 15px;
+        margin-top: 0;
+    }
+    .services .subheading{
+        margin-top: 30px;
+    }
+    .services .service-content{
+        margin-bottom: 20px;
+    }
+    .footer-text p{
+        padding-left: 0;
     }
 }
 @media only screen and (max-width: 576px){

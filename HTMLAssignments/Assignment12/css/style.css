@@ -55,15 +55,37 @@ body{
 	visibility: visible;
 }
 .navbar-toggler-icon{
-    width: 2px;
-    height: 22px;
-    background-color: #fff;
+    width: 22px;
+    height: 2px;
+    background-color: rgba(255,255,255,1);
+    margin: 4px 3px;
+    display: block;
 }
 .navbar-toggler{
-    background-color: #000;
-    transform: rotate(90deg);
+    border-radius: 0;
     padding: 10px;
     margin-right: 12px;
+}
+.navbar-toggler:focus{
+	outline: none;
+}
+.navbar-toggler:hover .line1,.navbar-toggler:hover .line2{
+	width: 76%;
+	background-color: #17BED2;
+	transition: 0.3s ease;
+}
+.navbar-toggler:hover .line3{
+	background-color: #17BED2;
+	transition: 0.3s ease;
+}
+.line1{
+	width: 30%;
+}
+.line2{
+	width: 55%;
+}
+.navbar-default.scrolled .navbar-toggler-icon{
+	background: rgba(0,0,0,1);
 }
 #myBtn {
     display: none;
@@ -119,7 +141,15 @@ body{
 }
 .social-icons li a{
 	color: #fff;
-    padding-right: 35px;
+    padding: 8px 14px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+.social-icons li a:hover {
+    background-color: #fff;
+    color: #333;
+    transition: 0.5s ease;
 }
 .about, .work{
 	padding: 8% 0

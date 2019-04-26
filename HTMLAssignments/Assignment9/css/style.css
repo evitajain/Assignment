@@ -26,14 +26,17 @@ body{
     border-radius: 50%;
 }
 .navbar-toggler-icon{
-    width: 2px;
-    height: 22px;
-    background-color: #fff;
+    width: 30px;
+    height: 2px;
+    background-color: #000;
+    margin: 6px 3px;
+    display: block;
 }
 .navbar-toggler{
-    background-color: #27e1ce;
-    transform: rotate(90deg);
     padding: 10px;
+}
+.navbar-toggler:focus{
+    outline: none;
 }
 .navbar-nav li a{
 	color: rgba(0, 0, 0, 0.7);
