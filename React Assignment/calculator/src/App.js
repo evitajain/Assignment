@@ -1,19 +1,20 @@
 import React from 'react';
-//import logo from './logo.svg';
 import './App.css';
+import * as math from "mathjs";
 
 class Calculator extends React.Component { 
 
   constructor(props){
     super(props);
     this.state = {
-      value: null,
+      Calcu: [],
       displayValue: '0',
       waitingForOperand: false,
-      operator: null
+      operator: ""
+      
     }
   }
-
+  
   inputDigit(digit){ 
     const displayValue = this.state.displayValue;
     const waitingForOperand = this.state.waitingForOperand;
@@ -61,45 +62,44 @@ class Calculator extends React.Component {
     })
   }
 
-  performOperation(nextOperator){
-    const displayValue = this.state.displayValue;
-    const operator = this.state.operator;
-    const value = this.state.value;
 
-    const nextValue = parseFloat(displayValue);
+  handleEqual = () => {
 
-    const operations = {
-      '/': (prevValue,nextValue) => prevValue / nextValue,
-      '*': (prevValue,nextValue) => prevValue * nextValue,
-      '-': (prevValue,nextValue) => prevValue - nextValue,
-      '+': (prevValue,nextValue) => prevValue + nextValue,
-      '=': (prevValue,nextValue) => nextValue
+    this.setState({ displayValue: math.eval(this.state.displayValue) });
+    let computedValue = math.eval(this.state.displayValue);
+
+    if(localStorage.getItem('Calcu') == null){
+      let Calcu = [];
+      let localValues=`${this.state.displayValue} = ${computedValue}`;
+      Calcu.push(localValues);
+      localStorage.setItem('Calcu', JSON.stringify(Calcu));
+    } else{
+      let Calcu = JSON.parse(localStorage.getItem('Calcu'));
+      let localValues=`${this.state.displayValue} = ${computedValue}`;
+      Calcu.push(localValues);
+      localStorage.setItem('Calcu', JSON.stringify(Calcu));
     }
 
-    if(value === null){
-      this.setState({
-        value: nextValue
-      })
-    } else if(operator){
-      const currentValue = value ||0 ;
-      const computedValue = operations[operator](currentValue,nextValue);
-      this.setState({
-        value: computedValue,
-        displayValue: String(computedValue)
-      })
-    }
+  };
 
-    this.setState({
-      waitingForOperand: true,
-      operator: nextOperator
-    })
+  history = () => {    
+   this.setState({
+      Calcu: JSON.parse(localStorage.getItem('Calcu'))
+    }); 
+  }
+
+  componentDidMount(){
+    localStorage.clear('Calcu');
   }
 
   render() { 
-
+    const historyValue =this.state.Calcu;
     return ( 
       <div className="container-fluid p-0">
           <div className="calculator">
+          <div className="history-screen">
+            {historyValue && historyValue.length ? <span>{historyValue.join(',\n')}</span> : ''}
+          </div>
             <div className="calculator-display">{this.state.displayValue}</div>
             <div className="input-keys">
               <div className="row m-0">
@@ -107,13 +107,13 @@ class Calculator extends React.Component {
                   <button className="calc-ac" onClick={() => this.clearDisplay()}>AC</button>
                 </div>
                 <div className="col-md-3 p-0">
-                  <button className="calc-history">HISTORY</button>
+                  <button className="calc-history" onClick={() => this.history()}>HISTORY</button>
                 </div>
                 <div className="col-md-3 p-0">
                   <button className="calc-percent" onClick={() => this.inputPercent()}>%</button>
                 </div>
                 <div className="col-md-3 p-0">
-                  <button className="calc-divide" onClick={() => this.performOperation('/')}>/</button>
+                  <button className="calc-divide" onClick={() => this.inputDigit('/')}>/</button>
                 </div>
                 <div className="col-md-3 p-0">
                   <button className="calc-7" onClick={()=> this.inputDigit(7)}>7</button>
@@ -125,7 +125,7 @@ class Calculator extends React.Component {
                   <button className="calc-9" onClick={()=> this.inputDigit(9)}>9</button>
                 </div>
                 <div className="col-md-3 p-0">
-                  <button className="calc-multiply" onClick={() => this.performOperation('*')}>*</button>
+                  <button className="calc-multiply" onClick={() => this.inputDigit('*')}>*</button>
                 </div>
                 <div className="col-md-3 p-0">
                   <button className="calc-4" onClick={()=> this.inputDigit(4)}>4</button>
@@ -137,7 +137,7 @@ class Calculator extends React.Component {
                   <button className="calc-6" onClick={()=> this.inputDigit(6)}>6</button>
                 </div>
                 <div className="col-md-3 p-0">
-                  <button className="calc-sub" onClick={() => this.performOperation('-')}>-</button>
+                  <button className="calc-sub" onClick={() => this.inputDigit('-')}>-</button>
                 </div>
                 <div className="col-md-3 p-0">
                   <button className="calc-1" onClick={()=> this.inputDigit(1)}>1</button>
@@ -145,11 +145,11 @@ class Calculator extends React.Component {
                 <div className="col-md-3 p-0">
                   <button className="calc-2" onClick={()=> this.inputDigit(2)}>2</button>
                 </div>
-                <div className="col-md-3 p-0">
+                <div className="col-md-3 p-0">  
                   <button className="calc-3" onClick={()=> this.inputDigit(3)}>3</button>
                 </div>
                 <div className="col-md-3 p-0">
-                  <button className="calc-plus" onClick={() => this.performOperation('+')}>+</button>
+                  <button className="calc-plus" onClick={() => this.inputDigit('+')}>+</button>
                 </div>
                 <div className="col-md-6 p-0">
                   <button className="calc-zero" onClick={()=> this.inputDigit(0)}>0</button>
@@ -158,7 +158,7 @@ class Calculator extends React.Component {
                   <button className="calc-dot" onClick={()=> this.inputDot()}>.</button>
                 </div>
                 <div className="col-md-3 p-0">
-                  <button className="calc-equal" onClick={() => this.performOperation('=')}>=</button>
+                  <button className="calc-equal" onClick={() => this.handleEqual()}>=</button>
                 </div>
               </div>
             </div>

@@ -31,7 +31,30 @@
 .heading h1{
   color: #4d5355;
 }
-
+.btn-primary{
+  margin: 15px 15px;
+}
+.fa-view, .fa-edit{
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 15px;
+}
+.input-box, .edit-inputBox{
+  border-radius: 3px;
+  border: 1px solid #282c34;
+  width: 20%;
+  padding: 8px;
+}
+.btn-success{
+  margin-right: 15px;
+}
+.checkbox{
+  border:none !important;
+  border-top: 1px solid #dee2e6 !important;
+}
+.up{
+  background-color: blue;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
