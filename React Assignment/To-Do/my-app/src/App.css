@@ -34,6 +34,9 @@
 .btn-primary{
   margin: 15px 15px;
 }
+.textDecoration{
+  text-decoration: line-through;
+}
 .fa-view, .fa-edit{
   margin-top: 15px;
   margin-bottom: 15px;
@@ -52,9 +55,14 @@
   border:none !important;
   border-top: 1px solid #dee2e6 !important;
 }
-.up{
-  background-color: blue;
+.view-btn{
+  position: absolute;
+  right: 31%;
+  top: 19.8%;
 }
+/* .up{
+  background-color: blue;
+} */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
