@@ -4,24 +4,121 @@
 	<title>calculator-prompt</title>
 </head>
 <body>
+	
+	<div class="fix" style="position: relative; background-color: red;width: 50%; height: 20px;">vfdzcd
+	</div>
+	<div class="rel" style="position: absolute; background-color: blue;width: 50%;height: 20px;">cdsuikjc
+	</div>
+	
+	<div class="abs" style="position: fixed; background-color: pink;width: 50%; height: 20px;  ">qwerty
+	</div>
+
 	<script>
-		let calculator ={
-		sum(){
-			return this.a + this.b;
-		},
+		
+	// 	let calculator ={
+	// 	sum(){
+	// 		return this.a + this.b;
+	// 	},
 
-		mul(){
-			return this.a * this.b;
-		},
+	// 	mul(){
+	// 		return this.a * this.b;
+	// 	},
 
-		read(){
-			this.a =+ prompt("Enter the value of a?","0");
-			this.b =+ prompt("Enter the value of b?","0");
-		}
-	};
-	calculator.read();
-	console.log(calculator.sum());
-	console.log(calculator.mul());
+	// 	read(){
+	// 		this.a =+ prompt("Enter the value of a?","0");
+	// 		this.b =+ prompt("Enter the value of b?","0");
+	// 	}
+	// };
+	// calculator.read();
+	// console.log(calculator.sum());
+	// console.log(calculator.mul());
+
+	// setTimeout(console.log(1),1000);
+
+	// setTimeout(console.log(2),);
+	// setTimeout(console.log(3),0);
+
+	 // window.onload = function() {
+  //       for(var i = 1; i < 21; i++) {
+  //           var button = document.createElement("button");
+  //           var text = document.createTextNode(i);
+  //           button.appendChild(text);
+  //           button.addEventListener("click", function() {
+  //              alert(this.firstChild.nodeValue); 
+  //           });
+  //           document.body.appendChild(button);
+  //       }    
+  //   }
+
+//   	function electionWinner(votes) {
+//     const voting = {};
+//     for(let v of votes){
+//         voting[v] = (voting[v] || 0) + 1;
+//     }
+
+//     let winners = [];
+//     let maxVotes = 0;
+
+//     for(let name in voting){
+//         if(voting[name] > maxVotes){
+//             maxVotes = voting[name];
+//             winners = [name];
+//         }
+//         else if (voting[name] === maxVotes){l
+//             winners.push(name);
+//         }
+//     }
+
+//     if(winners.length === 1){
+//         return winners[0];
+//     }
+//     winners.sort();
+//     return winners[winners.length - 1];
+// }
+// 		let winwin = [ "zella", "mary", "joe", "joe", "zella"];
+
+// 	 	let abc = electionWinner(winwin);
+
+// 	 	console.log(abc);
+
+//let res = {};
+// var res = [];
+// var res;
+// console.log(check(res));
+// function check(res){
+//     if(res = {}){
+//         for(let key in res){
+//         	console.log(1);
+//             return false;
+//         }
+//         	console.log(2);
+//             return true;
+//     } else if(Array.isArray(res = []) && res.length <= 0){
+//         console.log("abc");
+//     } else {
+//     	console.log("error")
+//     }
+    
+// }
+
+// var obj = {}
+var obj = [];
+console.log(isEmpty(obj))
+function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
+
+if (Array.isArray(obj) && obj.length > 0) {
+	console.log("1");
+            }
+            else {
+            	console.log("2");
+            	 }
+
 
 	</script>
 </body>
