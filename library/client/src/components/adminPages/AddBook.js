@@ -1,14 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-//import { logoutUser } from '../../actions/authentication';
 import { withRouter } from 'react-router-dom';
-import { newbooks } from '../../actions/authentication';
-import axios from 'axios';
-
-
-class AddBook extends Component{
-    
+import { newbooks,logoutUser, getBookCat } from '../../actions/authentication';
+ 
+class AddBook extends Component{    
     
     constructor(props){
         super(props);
@@ -19,7 +15,7 @@ class AddBook extends Component{
             author_name: "",
             book_cat: "",
             quantity: "1",
-            categ: []
+            status: true
         }
     }
 
@@ -41,35 +37,21 @@ class AddBook extends Component{
             book_name: this.state.book_name,
             author_name: this.state.author_name,
             book_cat: this.state.book_cat,
-            quantity: this.state.quantity
+            quantity: this.state.quantity,
+            status: this.state.status
         };
         this.props.newbooks(add_book, this.props.history);
     };
 
     componentDidMount() {
-        axios
-          .get("/api/library/getbookcat")
-          .then(res => {
-              var schemas = [];
-              let getcat = res.data;
-              for(let i in getcat){
-                schemas.push(getcat[i].book_cat);
-              }
-            this.setState({ 
-                categ: schemas
-            });
-          })
-          .catch(err => console.log(err.res));
+        
+        const {getBookCat} = this.props;
+        getBookCat();
+
       }
 
     render(){
-
-        const { categ } = this.state;
-        var book_cat = categ.length > 0 && categ.map((item) => {
-            return (
-                <option key={item}>{item}</option>
-            )
-        }, this);
+        const {schema} = this.props.books;
 
         return(
             <div className="addbooks" >
@@ -92,7 +74,7 @@ class AddBook extends Component{
                                     onChange={this.onChange}
                                     className="form-control" 
                                     id="book_name" 
-                                        placeholder="Book Name" 
+                                    placeholder="Book Name" 
                                     name="book_name"
                                     value={this.state.book_name}
                                     />
@@ -115,9 +97,13 @@ class AddBook extends Component{
                                     placeholder="Book Category" 
                                     name="book_cat"
                                     value={this.state.book_cat}
-                                >
-                                
-                                  {book_cat}
+                                >   
+                                  
+                                  {
+                                      schema.length > 0 && schema.map((el) =>{
+                                        return <option key={el}>{el}</option>
+                                      })
+                                  }
                                 </select>
                             </div>
                             <div className="form-group">
@@ -131,6 +117,17 @@ class AddBook extends Component{
                                     value={this.state.quantity}
                                     />
                             </div>
+                            <div className="form-group">
+                                <input type="text" 
+                                    onChange={this.onChange} 
+                                    min="1" 
+                                    className="form-control" 
+                                    id="status" 
+                                    name="status"
+                                    readOnly
+                                    value={this.state.status}
+                                    />
+                            </div>
                             <button type="submit" className="btn btn-success">Add Book</button>
                         </form>
                     </div>
@@ -142,13 +139,19 @@ class AddBook extends Component{
 
 AddBook.propTypes = {
     newbooks: PropTypes.func.isRequired,
-    //logoutUser: PropTypes.func.isRequired,
+    logoutUser: PropTypes.func.isRequired,
+    getBookCat: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
     auth: state.auth,
-    errors: state.errors
+    errors: state.errors,
+    books: state.books
 });
 
-export default connect(mapStateToProps,{newbooks})(withRouter(AddBook));
+
+export default connect(
+    mapStateToProps,
+    {newbooks, logoutUser, getBookCat}
+  )(withRouter(AddBook));

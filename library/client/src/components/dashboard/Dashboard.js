@@ -11,6 +11,10 @@ import BookCategory from '../adminPages/BookCat';
 import ViewBook from "../adminPages/ViewBook";
 import BookManage from '../adminPages/BookManage';
 import EditBook from '../adminPages/EditBook';
+import CategoryManage from '../adminPages/CategoryManage';
+import ViewBookCat from '../adminPages/ViewBookCat';
+import EditBookCat from '../adminPages/EditBookCat';
+import ViewBookDetail from '../adminPages/ViewBookDetail';
     
 class Dashboard extends Component {
 
@@ -35,7 +39,11 @@ class Dashboard extends Component {
                                 <Route path='/addCategory' component={BookCategory} /> 
                                 <Route path='/viewBook' component={ViewBook} />
                                 <Route path='/book_manage' component={BookManage} />
-                                <Route path='/editBook' component={EditBook} />
+                                <Route path='/category_manage' component={CategoryManage} />
+                                <Route path='/editBook/:id' component={EditBook} />
+                                <Route path='/viewBookCat' component={ViewBookCat} />
+                                <Route path='/editBookCat/:id' component={EditBookCat} />
+                                <Route path='/viewBookDetail/:id' component={ViewBookDetail} />
                             </Switch>
                         </div>
                     </div>

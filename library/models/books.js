@@ -25,6 +25,10 @@ let BooksSchema = new Schema({
     quantity:{
         type: String, 
         required: true
+    },
+    status:{
+        type: Boolean,
+        default: true
     }
 });
 

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import ViewBook from './ViewBook';
+import LibraryViewBook from '../librarianPages/LibraryViewBook';
 
-class BookManage extends Component {
+class LibraryBookManage extends Component {
 
     render() {
 
@@ -11,7 +11,7 @@ class BookManage extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col-md-12 bookadd">
-                        <Link to='/addBook' 
+                        <Link to='' 
                             className="fas fa-plus btn btn-primary float-right">
                                 ADD BOOK
                         </Link>
@@ -19,7 +19,7 @@ class BookManage extends Component {
                 </div>
                 <div className="row">
                     <div className="col-md-12">
-                        <ViewBook />
+                        <LibraryViewBook />
                     </div>
                 </div>
             </div>
@@ -27,4 +27,4 @@ class BookManage extends Component {
     }
 }
 
-export default BookManage;
+export default LibraryBookManage;

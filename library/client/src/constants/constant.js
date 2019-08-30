@@ -11,7 +11,12 @@ export const MENU = [
     },
     {
         url: 'fas fa-book fa-4x',
-        name: 'ADD CATEGORY',
-        link: '/addCategory'
+        name: 'Category Management',
+        link: '/category_manage'
+    },
+    {
+        url: 'fas fa-users fa-4x',
+        name: 'User Management',
+        link: '/user_manage'
     }
 ]

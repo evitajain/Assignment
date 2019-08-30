@@ -6,8 +6,8 @@ export const LIBRARIAN = [
     },
     {
         url: 'fas fa-book-open fa-4x',
-        name: 'VIEW BOOK',
-        link: '/vbook'
+        name: 'BOOK MANAGEMENT',
+        link: '/librarian_book_manage'
     },
     {
         url: 'fas fa-book fa-4x',

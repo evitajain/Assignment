@@ -148,7 +148,7 @@ class Register extends Component {
                         <div className="col-md-12">
                             <div className="form-group">
                                 <label htmlFor="checkbox">Role</label>
-                                <input 
+                                {/* <input 
                                     type="radio" 
                                     name="role"
                                     id="Admin"
@@ -156,7 +156,7 @@ class Register extends Component {
                                     onChange={this.handleChange}
                                     value='Admin'
                                     error={errors.admin}    
-                                />Admin
+                                />Admin */}
 
                                 <input 
                                     type="radio" 

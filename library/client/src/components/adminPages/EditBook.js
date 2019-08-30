@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
-// import AddBook from './AddBook';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import {getBookCat} from '../../actions/authentication';
 
 class EditBook extends Component{
 
     constructor(props){
         super(props);
-
         this.state={
             book_id: "",
             book_name: "",
             author_name: "",
             book_cat: "",
-            quantity: "1",
-            categ: []
+            quantity: ""
         }
         this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     onChange = e => {
@@ -30,108 +31,135 @@ class EditBook extends Component{
     };
 
     componentDidMount() {
-        axios
-          .get("/api/library/getbookcat")
-          .then(res => {
-              var schemas = [];
-              let getcat = res.data;
-              for(let i in getcat){
-                schemas.push(getcat[i].book_cat);
-              }
-            this.setState({ 
-                categ: schemas
-            });
-          })
-          .catch(err => console.log(err.res));
+        this.props.getBookCat();
+
+        axios.get('/api/library/editBook/'+this.props.match.params.id)
+            .then(res => {
+                this.setState({ 
+                  book_id: res.data.book_id, 
+                  book_name: res.data.book_name,
+                  author_name: res.data.author_name,
+                  book_cat: res.data.book_cat,
+                  quantity: res.data.quantity,
+                  status: res.data.status
+                });
+            })
+            .catch((err) =>{
+                console.log(err);
+            })
       }
+
+    onSubmit(e) {
+        e.preventDefault();
+        const viewBook = {
+            book_id: this.state.book_id,
+            book_name: this.state.book_name,
+            author_name: this.state.author_name,
+            book_cat: this.state.book_cat,
+            quantity: this.state.quantity,
+            status: this.state.status
+        };
+        axios.put('/api/library/updateBook/'+this.props.match.params.id, viewBook)
+            .then(res => console.log(res.data));
+        
+        this.props.history.push('/book_manage');
+      }
+     
 
     render(){
 
-        const { categ } = this.state;
-        var book_cat = categ.length > 0 && categ.map((item) => {
-            return (
-                <option key={item}>{item}</option>
-            )
-        }, this);
+        const {schema} = this.props.books;
 
         return(
-                <div className="modal fade" id="editBook">
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-
-
-                            <div className="modal-header">
-                                <h4 className="modal-title">Modal Heading</h4>
-                                <button type="button" className="close" data-dismiss="modal">&times;</button>
-                            </div>
-
-
-                            <div className="modal-body">
-                            <form onSubmit={this.onSubmit}>
-                            <div className="form-group">
-                                <input type="number"
-                                    min="1" 
-                                    onChange={this.onChange}
-                                    className="form-control" 
-                                    id="book_id" 
-                                    placeholder="Book Id" 
-                                    name="book_id"
-                                    value={this.state.book_id}
-                                    />
-                            </div>
-                            <div className="form-group">
-                                <input type="text" 
-                                    onChange={this.onChange}
-                                    className="form-control" 
-                                    id="book_name" 
-                                        placeholder="Book Name" 
-                                    name="book_name"
-                                    value={this.state.book_name}
-                                    />
-                            </div>
-                            <div className="form-group">
-                                <input type="text"
-                                    onChange={this.onChange} 
-                                    className="form-control" 
-                                    id="author_name" 
-                                    placeholder="Author Name" 
-                                    name="author_name"
-                                    value={this.state.author_name}
-                                    />
-                            </div>
-                            <div className="form-group">
-                                <select type="text" 
-                                    onChange={this.onChange}
-                                    className="form-control" 
-                                    id="book_cat" 
-                                    placeholder="Book Category" 
-                                    name="book_cat"
-                                    value={this.state.book_cat}
-                                >
-                                
-                                  {book_cat}
-                                </select>
-                            </div>
-                            <div className="form-group">
-                                <input type="number" 
-                                    onChange={this.onChange} 
-                                    min="1" 
-                                    className="form-control" 
-                                    id="quantity" 
-                                    placeholder="Quantity" 
-                                    name="quantity"
-                                    value={this.state.quantity}
-                                    />
-                            </div>
-                            <button type="submit" className="btn btn-success">Update Book</button>
-                        </form>
-                            </div>
-
-                        </div>
+           
+                <form onSubmit={this.onSubmit}>
+                    <h1>Edit BOOK</h1>
+                    <div className="form-group">
+                        <input type="number"
+                            min="1" 
+                            onChange={this.onChange}
+                            className="form-control" 
+                            id="book_id" 
+                            placeholder="Book Id" 
+                            name="book_id"
+                            value={this.state.book_id}
+                            />
                     </div>
-                </div>
+                    <div className="form-group">
+                        <input type="text" 
+                            onChange={this.onChange}
+                            className="form-control" 
+                            id="book_name" 
+                            placeholder="Book Name" 
+                            name="book_name"
+                            value={this.state.book_name}
+                            />
+                    </div>
+                    <div className="form-group">
+                        <input type="text"
+                            onChange={this.onChange} 
+                            className="form-control" 
+                            id="author_name" 
+                            placeholder="Author Name" 
+                            name="author_name"
+                            value={this.state.author_name}
+                            />
+                    </div>
+                    <div className="form-group">
+                        <select type="text" 
+                            onChange={this.onChange}
+                            className="form-control" 
+                            id="book_cat" 
+                            placeholder="Book Category" 
+                            name="book_cat"
+                            value={this.state.book_cat}
+                        >
+                        
+                            {
+                                schema.length > 0 && schema.map((el) =>{
+                                return <option key={el}>{el}</option>
+                                })
+                            }
+                        </select>
+                    </div>
+                    <div className="form-group">
+                        <input type="number" 
+                            onChange={this.onChange} 
+                            min="1" 
+                            className="form-control" 
+                            id="quantity" 
+                            placeholder="Quantity" 
+                            name="quantity"
+                            value={this.state.quantity}
+                            />
+                    </div>
+                    <div className="form-group">
+                        <select type="text" 
+                            onChange={this.onChange}
+                            className="form-control" 
+                            id="status"
+                            name="status"
+                            value={this.state.status}
+                        >
+                            <option>true</option> 
+                            <option>false</option>  
+                        </select>
+                    </div>
+                    <button type="submit" className="btn btn-success">Update Book</button>
+                </form>
+                           
         )
     }
 }
 
-export default EditBook;
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors,
+    books: state.books
+});
+
+
+export default connect(
+    mapStateToProps,
+    {getBookCat}
+  )(withRouter(EditBook));
