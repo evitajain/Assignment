@@ -104,24 +104,50 @@
 // }
 
 // var obj = {}
-var obj = [];
-console.log(isEmpty(obj))
-function isEmpty(obj) {
-    for(var key in obj) {
-        if(obj.hasOwnProperty(key))
-            return false;
-    }
-    return true;
+// var obj = [];
+// console.log(isEmpty(obj))
+// function isEmpty(obj) {
+//     for(var key in obj) {
+//         if(obj.hasOwnProperty(key))
+//             return false;
+//     }
+//     return true;
+// }
+
+// if (Array.isArray(obj) && obj.length > 0) {
+// 	console.log("1");
+//             }
+//             else {
+//             	console.log("2");
+//             	 }
+
+
+
+// function counter (){
+// 	var n  = 0;
+// 	return {
+// 		count: function(){ return n++; },
+// 		reset: function(){n=0;}
+// 	};
+// }
+//  var  c= counter(), d= counter();
+
+//  console.log(c.count());
+//  console.log(d.count());
+//  console.log(c.reset());
+//  console.log(c.count());
+//  console.log(d.count());
+
+var a = 5;
+function one(){
+	a=6;
 }
 
-if (Array.isArray(obj) && obj.length > 0) {
-	console.log("1");
-            }
-            else {
-            	console.log("2");
-            	 }
+function two(){
+	alert(a);
+}
 
-
+two();
 	</script>
 </body>
 </html>
