@@ -1,0 +1,22 @@
+.navHeader{
+    background-color: #000;
+    color: #fff;
+    padding: 8px 0;
+}
+.navHeader .navbar-brand{
+    color: #fff;
+    font-weight: 600;
+    font-size: 26px;
+    padding-bottom: 0;
+}
+.navHeader .search{
+    margin: 4px;
+}
+.navHeader .nav-link{
+    color: #fff;
+    font-weight: 600;
+    padding-right: 15px;
+}
+.navHeader .nav-link i{
+    padding-right: 5px;
+}
